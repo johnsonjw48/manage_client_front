@@ -1,0 +1,34 @@
+<div class="container ">
+  <div class="card mx-auto my-5 col-md-5">
+    <form [formGroup]="manageForm" (ngSubmit)="onSubmitForm()">
+      <div class="mb-3 p-3">
+        <label for="formFile" class="form-label">Default file input example</label>
+        <input class="form-control" type="file" id="formFile" formControlName="fichier" (change)="handleChangeFile($event)">
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <button class="btn btn-success" [disabled]="manageForm.invalid">Valider</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="mx-auto col-md-5" *ngIf="currentFileData">
+    <table class="table table-success table-striped">
+      <thead>
+      <tr>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Montant</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let client of currentFileData">
+        <td>{{client.nom}}</td>
+        <td>{{client.prenom}}</td>
+        <td>{{client.phone}}</td>
+        <td>{{client.montant_du}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
